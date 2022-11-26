@@ -3,7 +3,6 @@ import _ from "lodash";
 import Notiflix from 'notiflix';
 import { fetchRequest } from './fetchCountries';
 
-
 const inputField = document.querySelector("#search-box");
 const countryList = document.querySelector(".country-list");
 const countryInfo = document.querySelector(".country-info");
@@ -18,16 +17,14 @@ inputField.addEventListener('input', _.debounce(() => {
             if (country.length > 10) {
                 Notiflix.Notify.info(infoAlert);
             } else if (country.length > 1) {
-                countryList.style.display = `block`;
+                country.info.innerHTML = '';
                 countryList.innerHTML = createMarkupList(country);
-                countryInfo.style.display = `none`;
             } else if (country.length === 1) {
-                countryInfo.style.display = `block`;
+                countryList.innerHTML = '';
                 countryInfo.innerHTML = createMarkupOne(country);
-                countryList.style.display = `none`;
             } else {
-                countryInfo.style.display = `none`;
-                countryList.style.display = `none`;
+                country.info.innerHTML = '';
+                countryList.innerHTML = '';
                 Notiflix.Notify.failure(errorAlert);
             }
         })  
@@ -66,5 +63,3 @@ function createMarkupList(value) {
     }).join('');
     return markup;
 }
-
-// const DEBOUNCE_DELAY = 300;
