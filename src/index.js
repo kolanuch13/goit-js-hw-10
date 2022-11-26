@@ -31,8 +31,6 @@ inputField.addEventListener('input', _.debounce(() => {
 }, 300)
 );
 
-console.log("kkk");
-
 function createMarkupOne(value) {
     const markup = value.filter(item => { 
         if (item.cca2 !== "RU") {
