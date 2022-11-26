@@ -17,7 +17,7 @@ inputField.addEventListener('input', _.debounce(() => {
             if (country.length > 10) {
                 Notiflix.Notify.info(infoAlert);
             } else if (country.length > 1) {
-                country.info.innerHTML = '';
+                countryInfo.innerHTML = '';
                 countryList.innerHTML = createMarkupList(country);
             } else if (country.length === 1) {
                 countryList.innerHTML = '';
