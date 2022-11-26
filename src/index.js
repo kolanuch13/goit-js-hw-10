@@ -17,6 +17,7 @@ inputField.addEventListener('input', _.debounce(() => {
             if (country.length > 10) {
                 Notiflix.Notify.info(infoAlert);
             } else if (country.length > 1) {
+                console.log(country);
                 countryInfo.innerHTML = '';
                 countryList.innerHTML = createMarkupList(country);
             } else if (country.length === 1) {
@@ -30,6 +31,8 @@ inputField.addEventListener('input', _.debounce(() => {
         })  
 }, 300)
 );
+
+console.log("kkk");
 
 function createMarkupOne(value) {
     const markup = value.map(item => {return `<div class="country-card">
