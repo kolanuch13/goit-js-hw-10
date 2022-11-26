@@ -23,7 +23,7 @@ inputField.addEventListener('input', _.debounce(() => {
                 countryList.innerHTML = '';
                 countryInfo.innerHTML = createMarkupOne(country);
             } else {
-                country.info.innerHTML = '';
+                countryInfo.innerHTML = '';
                 countryList.innerHTML = '';
                 Notiflix.Notify.failure(errorAlert);
             }
