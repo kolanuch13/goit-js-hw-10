@@ -1,5 +1,5 @@
 import './css/styles.css';
-import _ from "lodash";
+import _, { indexOf } from "lodash";
 import Notiflix from 'notiflix';
 import { fetchRequest } from './fetchCountries';
 
@@ -17,7 +17,6 @@ inputField.addEventListener('input', _.debounce(() => {
             if (country.length > 10) {
                 Notiflix.Notify.info(infoAlert);
             } else if (country.length > 1) {
-                console.log(country);
                 countryInfo.innerHTML = '';
                 countryList.innerHTML = createMarkupList(country);
             } else if (country.length === 1) {
@@ -35,7 +34,12 @@ inputField.addEventListener('input', _.debounce(() => {
 console.log("kkk");
 
 function createMarkupOne(value) {
-    const markup = value.map(item => {return `<div class="country-card">
+    const markup = value.filter(item => { 
+        if (item.cca2 !== "RU") {
+            value.splice(indexOf(value.item, 1));
+            return value;
+        }
+    }).map(item => {return `<div class="country-card">
             <h1 class="country-card-name">
             <img class="flag-image" src="https://flagcdn.com/w320/${item.cca2.toLowerCase()}.png">
                     ${item.name.common}
@@ -56,7 +60,13 @@ function createMarkupOne(value) {
 }
 
 function createMarkupList(value) {
-    const markup = value.map(item => {
+    const markup = value.filter(item => { 
+        if (item.cca2 !== "RU") {
+            value.splice(indexOf(value.item, 1));
+            return value;
+        }
+    })
+        .map(item => {
         return `
         <li class="list-country-item">
             <img class="flag-image" src="https://flagcdn.com/w320/${item.cca2.toLowerCase()}.png" style="width: 50px">
